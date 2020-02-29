@@ -7,11 +7,20 @@ own.  It will be a stock market app</p>
 </p>
 <%= form_tag root_path, :method => 'POST' do %>
     <%= text_field_tag 'ticker', nil, placeholder:
-        "Enter Ticker Symbol", size: 50 %>
+        "Enter Ticker (Stock) Symbol", size: 50 %>
     <%=submit_tag 'Lookup' %>
 <% end %>
+ </br>
 
 <% if @stock %>
-  <%= @stock.company_name %> </br>
-  $<%= @stock.latest_price %>
+    <%= @stock.company_name %> </br>
+      Current Price $
+    <%= @stock.latest_price %> </br>
+<% elsif @nothing %>
+    <%= @nothing %>
+<% end %>
+
+<!-- can't get the error to work if not correct stock --!>
+<%if @error %>
+    <%= @error %>
 <% end %>
