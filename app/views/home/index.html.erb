@@ -1,2 +1,17 @@
 <h1>Home Page</h1>
-<p>Hello Word this is my first rails app</p>
+<p>Hello Word this is my first rails app that I am doing on my
+own.  It will be a stock market app</p>
+
+<p>
+  Look up a stock
+</p>
+<%= form_tag root_path, :method => 'POST' do %>
+    <%= text_field_tag 'ticker', nil, placeholder:
+        "Enter Ticker Symbol", size: 50 %>
+    <%=submit_tag 'Lookup' %>
+<% end %>
+
+<% if @stock %>
+  <%= @stock.company_name %> </br>
+  $<%= @stock.latest_price %>
+<% end %>
