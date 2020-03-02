@@ -4,13 +4,18 @@ class HomeController < ApplicationController
     if params[:ticker] == ""
       @nothing = "Enter Ticker (Stock) Symbol"
     elsif params[:ticker]
-      @stock = StockQuote::Stock.quote(params[:ticker])
+      begin
+        @stock = StockQuote::Stock.quote(params[:ticker])
+      rescue => e
+        @nothing = e
+      end
+      
   ## can't get the error to show. unknown symbol??
   ##      if !@stock
   ##         @error = "That is not a valid ticker symbol!"
   ##      end
 
-	   end
+    end
 
   end
 
