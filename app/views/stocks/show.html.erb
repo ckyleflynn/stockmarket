@@ -1,17 +1,14 @@
 <% @api =StockQuote::Stock.new(api_key: 'pk_cf8703fa79304007b7352d1e18ddae15') %>
 
-    
-      <%begin%>
-        <% @ticker = StockQuote::Stock.quote(stock.ticker) %>
-      <%rescue %>
 
-         The ticker: <%= @stock.ticker %><br/> does not exist!
-
-
-
-      <% else %>
-        <% @logo = StockQuote::Stock.logo(stock.ticker)%>
-        <img src="<%= logo.url %>"><br/><br/>
+            <%begin%>
+        <% @ticker = StockQuote::Stock.quote(@stock.ticker) %>
+            <%rescue%>
+              This stock  <%= @stock.ticker %> does not exist!<br /><br />
+          
+        <% else %>
+        <% @logo = StockQuote::Stock.logo(@stock.ticker)%>
+          <img src="<%= @logo.url %>"><br/><br/>
 
           <h2><%= @ticker.company_name %></h2><br/>
           Ticker Symbol: <%= @ticker.symbol %><br/>
@@ -25,10 +22,11 @@
 
           Market Cap: $<%= number_with_precision(@ticker.market_cap, :precision => 2, :delimiter => ',') %><br/>
 
+        <%end%>
 
 
 
-      <% end %>
+
 
 
 

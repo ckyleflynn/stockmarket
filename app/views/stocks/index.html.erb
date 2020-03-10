@@ -10,6 +10,7 @@
       <th>Ticker</th>
       <th>Current Price</th>
       <th>Market Cap</th>
+      <th>YTD Change</th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -25,7 +26,7 @@
           <td><%= link_to "Error", stock %></td>
           <td><%= stock.ticker %></td>
           <td>N/A</td>
-
+          <td>N/A</td>
           <td>N/A</td>
 
 
@@ -38,9 +39,8 @@
           <td><%= link_to @ticker.company_name, stock %></td>
           <td><%= @ticker.symbol %></td>
           <td>$<%= number_with_precision(@ticker.latest_price, :precision => 2, :delimiter => ',') %></td>
-
           <td>$<%= number_with_precision(@ticker.market_cap, :precision => 2, :delimiter => ',') %></td>
-
+          <td><%= number_with_precision(@ticker.ytd_change, :precision => 2, :delimiter => ',') %></td>
 
           <td><center><%= link_to 'Edit', edit_stock_path(stock) %></center></td>
           <td><center><%= link_to 'Delete', stock, method: :delete, data: { confirm: 'Are you sure?' } %></center></td>
