@@ -4,9 +4,10 @@
             <%begin%>
         <% @ticker = StockQuote::Stock.quote(@stock.ticker) %>
             <%rescue%>
-              This stock  <%= @stock.ticker %> does not exist!<br />
+              <h1>This stock  <%= @stock.ticker %> does not exist!<br />
+                It shows as an error on your stock page!<br />
                 Delete it!<br />
-
+              </h1>
         <% else %>
         <% @logo = StockQuote::Stock.logo(@stock.ticker)%>
           <img src="<%= @logo.url %>"><br/><br/>

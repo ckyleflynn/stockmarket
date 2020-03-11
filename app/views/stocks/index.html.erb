@@ -1,7 +1,7 @@
 <% @api =StockQuote::Stock.new(api_key: 'pk_cf8703fa79304007b7352d1e18ddae15') %>
 
 
-<h1>Stocks</h1>
+<h1>Your Stocks</h1>
 
 <table class ="table table-bordered">
   <thead class="thead-dark">
@@ -11,6 +11,8 @@
       <th>Current Price</th>
       <th>Market Cap</th>
       <th>YTD Change</th>
+      <th>Holdings</th>
+      <th>Total</th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -28,6 +30,8 @@
           <td>N/A</td>
           <td>N/A</td>
           <td>N/A</td>
+          <td>NA</td>
+          <td>$NA</td>
 
 
           <td><center><%= link_to 'Edit', edit_stock_path(stock) %></center></td>
@@ -42,6 +46,9 @@
           <td>$<%= number_with_precision(@ticker.market_cap, :precision => 2, :delimiter => ',') %></td>
           <td><%= number_with_precision(@ticker.ytd_change, :precision => 2, :delimiter => ',') %></td>
 
+          <td>NA</td>
+          <td>$NA</td>
+
           <td><center><%= link_to 'Edit', edit_stock_path(stock) %></center></td>
           <td><center><%= link_to 'Delete', stock, method: :delete, data: { confirm: 'Are you sure?' } %></center></td>
         </tr>
@@ -52,7 +59,9 @@
       <% end %>
 
     <% end %>
+
   </tbody>
+
 </table> <br />
 <td>
   <center>
@@ -62,4 +71,4 @@
 
 <br>
 
-<%= link_to 'New Stock', new_stock_path %>
+<%= link_to 'Add Stock', new_stock_path %>
