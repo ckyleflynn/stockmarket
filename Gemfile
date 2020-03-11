@@ -6,7 +6,6 @@ git_source(:github) do |repo_name|
 end
 
 gem 'rails', '~> 5.1.7'
-gem 'sqlite3', '<1.4'
 gem 'puma', '~> 3.7'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -21,7 +20,13 @@ gem "stock_quote", '~> 3.0.0'
 ##User management system
 gem 'devise', '~> 4.7', '>= 4.7.1'
 
+
+group :production do
+  gem 'pg', '~> 1.2', '>= 1.2.2'
+end
+
 group :development, :test do
+  gem 'sqlite3', '<1.4'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
